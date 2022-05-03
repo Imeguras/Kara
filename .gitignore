@@ -1,0 +1,10 @@
+Kara_Data/
+Assets/TextMesh\ Pro
+*.x86_64
+*.log
+*/*.meta
+Logs/
+UserSettings/
+Packages/
+.vscode/
+UnityPlayer.so
