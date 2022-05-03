@@ -1,10 +1,24 @@
-Kara_Data/
-Assets/TextMesh\ Pro
-*.x86_64
-*.log
-*/*.meta
-Logs/
-UserSettings/
+Library/
 Packages/
-.vscode/
+
+Kara_Data/
+
+obj/
 UnityPlayer.so
+*.x86_64
+Logs/
+*.log
+**.meta
+
+ProjectSettings/
+UserSettings/
+.vscode/
+
+Assets/TextMesh\ Pro
+
+New Terrain*.asset
+
+
+
+
+
