@@ -22,18 +22,24 @@ namespace Kara.Entities{
 			}	
 		}
 		public class _Capital_Prototype : kp._Prototype{
-			private static GameObject _cpt_prtp=Resources.Load<GameObject>("CapitalPrototype");
+			private static GameObject _cpt_prtp;
 			public GameObject getObj_Prtp(){
 				return _getObj_Prtp();
 			}
 			public static GameObject _getObj_Prtp(){
 				return _cpt_prtp;
 			}
-			public void _Capital_Preview(Vector3 pos){
-				Instantiate(_cpt_prtp, pos, Quaternion.identity);
-				//_cpt_prtp.gameObjec
-				//capital.AddComponent<MeshFilter>().mesh= Resources.Load<Mesh>("WoodHouse");
-				//capital.AddComponent<MeshRenderer>().material=Resources.Load<Material>("PrototypeBuild");
+			public _Capital_Prototype(){
+				_cpt_prtp=Instantiate(Resources.Load<GameObject>("CapitalPrototype"), Vector3.zero, Quaternion.identity);
+			}
+			public static void _Capital_Prototype_Destroy(){
+				Destroy(_cpt_prtp.gameObject);
+			}
+			public void capital_Preview(Vector3 pos){
+				_capital_Preview(pos);
+			}
+			public static void _capital_Preview(Vector3 pos){
+				_cpt_prtp.transform.position= pos; 
 			}
 		}
 		

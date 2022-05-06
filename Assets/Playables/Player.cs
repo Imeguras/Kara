@@ -1,4 +1,5 @@
 
+using System.Threading.Tasks;
 using System.Linq;
 using System;
 using System.Drawing;
@@ -6,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Kara.Entities;
 namespace Kara.Playables{
 	public class Spectator{
 		protected int uuid;
@@ -69,10 +70,40 @@ namespace Kara.Playables{
 				
 				button.transform.SetParent(GameObject.Find("Buildings").transform);
 				button.transform.position=new Vector3(500,128,0);
-								
-
+				
+				button.GetComponent<Button>().onClick.AddListener(()=>{
+					Capital._Capital_Prototype cp= new Capital._Capital_Prototype();
+					GameEyes.AoClickEsq += (instProt);
+					GameEyes.AoClickDir+= (cancProt);
+					GameEyes.Waiting+=(updatePos);
+					});				
+			
 			}
 		}
+	 
+		public void updatePos(){
+			RaycastHit hit;
+			Ray ray = pCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+				Capital._Capital_Prototype._capital_Preview(hit.point);
+			}
+		}
+		void cancProt(){
+			GameEyes.Waiting -=(updatePos); 
+			GameEyes.AoClickEsq -= (instProt);
+			GameEyes.AoClickDir -=(cancProt);
+			Capital._Capital_Prototype._Capital_Prototype_Destroy();
+		}
+		
+		void instProt(){
+			GameEyes.Waiting -= (updatePos);
+			GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
+				
+			Capital._Capital_Prototype._Capital_Prototype_Destroy();
+			GameEyes.AoClickEsq -= (instProt);
+			GameEyes.AoClickDir -= (cancProt);
+		}
+		
 	}
 
 }

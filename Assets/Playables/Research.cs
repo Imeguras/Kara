@@ -18,6 +18,6 @@ namespace Kara.Playables
     }
 	public interface _Prototype{
 		GameObject getObj_Prtp();
-		void _Capital_Preview(Vector3 pos);
+		void capital_Preview(Vector3 pos);
 	}
 }

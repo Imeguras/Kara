@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace Kara.Playables{
     public class GameEyes : MonoBehaviour{
-		
-		//public TerrainData terrainTrack;
+		public delegate void OnClick();
+    	public static event OnClick AoClickEsq;
+    	public static event OnClick AoClickDir;
+		public static event OnClick Waiting;
 		private Vector3 desiredPosition;
 
 		public float boxPanBorder = 30;
@@ -22,8 +24,18 @@ namespace Kara.Playables{
 			
 		}
 		
-		//TODO some event instead of looping every single time
+		
 		void Update () {
+			if(Waiting!= null){
+				Waiting();
+
+			}
+			if (Input.GetMouseButtonDown(0) && AoClickEsq != null ){
+           		AoClickEsq();
+        	}
+        	if (Input.GetMouseButtonDown(1) && AoClickDir != null){
+            	AoClickDir();
+        	}
 			float x = 0, y = 0, z = 0;
 			float speed = scrollSpeed * Time.deltaTime;
 
