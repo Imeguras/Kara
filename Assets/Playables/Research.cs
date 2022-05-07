@@ -8,16 +8,20 @@ using UnityEngine;
 namespace Kara.Playables
 {
     public class Research{
-		public List<GameObject> availableBuild;
+		
+		public List<_Prototype<Building_Abstract>> availableBuild;
 		
 		public Research(){
-			availableBuild= new List<GameObject>();
-			availableBuild.Add(Capital._Capital_Prototype._getObj_Prtp()); 
+			availableBuild= new List<_Prototype<Building_Abstract>>();
+			
+			availableBuild.Add(new Capital._Capital_Prototype(false));
+			//availableBuild.Add(Capital._Capital_Prototype); 
 		}
 	
     }
-	public interface _Prototype{
+	public interface _Prototype<out R>{
 		GameObject getObj_Prtp();
-		void capital_Preview(Vector3 pos);
+		void obj_Preview(Vector3 pos);
+		Sprite getIcn();
 	}
 }

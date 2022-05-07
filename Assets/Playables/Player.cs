@@ -1,4 +1,5 @@
 
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
@@ -67,12 +68,14 @@ namespace Kara.Playables{
 			foreach (var item in playerResearch.availableBuild){
 				GameObject button=GameObject.Instantiate(gm,Vector3.zero, Quaternion.identity);
 				button.name=("ButtonBuilding"+(++i));
-				
+
 				button.transform.SetParent(GameObject.Find("Buildings").transform);
 				button.transform.position=new Vector3(500,128,0);
 				
+				button.GetComponent<Button>().image.sprite=item.getIcn(); 
 				button.GetComponent<Button>().onClick.AddListener(()=>{
-					Capital._Capital_Prototype cp= new Capital._Capital_Prototype();
+					Capital._Capital_Prototype cp= new Capital._Capital_Prototype(true);
+					
 					GameEyes.AoClickEsq += (instProt);
 					GameEyes.AoClickDir+= (cancProt);
 					GameEyes.Waiting+=(updatePos);
@@ -97,11 +100,13 @@ namespace Kara.Playables{
 		
 		void instProt(){
 			GameEyes.Waiting -= (updatePos);
-			GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
-				
-			Capital._Capital_Prototype._Capital_Prototype_Destroy();
 			GameEyes.AoClickEsq -= (instProt);
 			GameEyes.AoClickDir -= (cancProt);
+			GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
+			t.GetComponent<MeshRenderer>().material=UnityEngine.Resources.Load<Material>("WoodHouse");
+			Capital._Capital_Prototype._Capital_Prototype_Destroy();
+			
+			
 		}
 		
 	}

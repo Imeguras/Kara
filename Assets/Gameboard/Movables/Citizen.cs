@@ -11,7 +11,7 @@ namespace Kara.Entities{
 			cMesh=Resources.Load<Mesh>("Citizen");
 			this.gameObject.transform.Rotate(new Vector3(-90,0,0));
 			
-			innerBehaviour=new _Citizen(50,20f);
+			innerBehaviour=new _Citizen("Citizen",50,20f);
 			this.gameObject.AddComponent<MeshFilter>();
 			this.gameObject.AddComponent<MeshRenderer>();
 			this.gameObject.AddComponent<BoxCollider>();
@@ -25,7 +25,7 @@ namespace Kara.Entities{
 		}
 
 		public class _Citizen: Unit {
-			public _Citizen(uint baseHP, float baseSpeed): base(baseHP, baseSpeed){
+			public _Citizen(string name, uint baseHP, float baseSpeed): base(name, baseHP, baseSpeed){
 
 			}
 		}	

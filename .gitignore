@@ -9,6 +9,7 @@ UnityPlayer.so
 Logs/
 *.log
 **.meta
+Temp/
 
 ProjectSettings/
 UserSettings/
