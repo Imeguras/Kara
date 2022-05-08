@@ -72,6 +72,8 @@ namespace Kara.ProceduralGen{
 					dy=(heightMap[y,x]- ( (heightMap[(int)y0,x]+heightMap[(int)y1,x]) /2 ) / ( y - ( (y0+y1)/2 ) ) );
 
 				}catch(Exception e){
+					//GOd damn this fucking warning is annoying 
+					Debug.Log(e.Message);
 					Debug.Log(" X: "+x+" Y: "+y+"lacunarity");
 					//Debug.Log("Stuff:"+heightMap[y,x]+"StuffD:"+(heightMap[y,(int)x0])+"teteta"+heightMap[y,(int)x1]);
 				

@@ -11,7 +11,6 @@ namespace Kara.Entities{
 		protected uint morale_transmit;
 		protected Texture2D building_Icon;
 		public Building_Abstract(string name, uint baseHP, uint morale_receive, uint morale_transmit):base(name, baseHP){
-			
 			this.morale_receive =morale_receive;
 			this.morale_transmit=morale_transmit;
 		}

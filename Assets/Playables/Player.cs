@@ -1,4 +1,6 @@
 
+using System.Runtime.CompilerServices;
+using System.Net.Http.Headers;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using System.Linq;
@@ -13,12 +15,15 @@ namespace Kara.Playables{
 	public class Spectator{
 		protected int uuid;
 		protected string playerName;
+		protected List<GameObject> sleepingCameras; 
 		protected GameObject pCamera;
 		protected GameObject curCamera; 
 		
 		public Spectator(string playerName){
 			this.uuid=playerName.GetHashCode();
 			this.playerName=playerName; 
+			sleepingCameras=new List<GameObject>();
+			 
 			creatCamera(ref pCamera);
 		
 			curCamera=pCamera; 
@@ -33,17 +38,26 @@ namespace Kara.Playables{
 		public void getCurCamera(ref GameObject camera){
 			camera=curCamera; 
 		}
+		public void switchCamera(ref GameObject toCamera){
+			curCamera.SetActive(false);
+			sleepingCameras.Add(curCamera); 
+			curCamera=toCamera;
+			curCamera.SetActive(true);
+		}
 		public void creatCamera(ref GameObject go){
 			go= new GameObject(uuid+"_MainCamera");
 			go.AddComponent<Camera>();
-		
 		}
 		public void resetCamera(){
 			if(pCamera!=null){
+				if(curCamera){
+					curCamera.SetActive(false); 
+				}
 				curCamera=pCamera;
+				curCamera.SetActive(true); 
 			}else{
 				Debug.LogWarning("Default Player Camera(DPC) was erased creating a new one");
-				pCamera= new GameObject();
+				creatCamera(ref pCamera);
 				resetCamera(); 
 			}
 		}
@@ -51,12 +65,14 @@ namespace Kara.Playables{
 	public class Player : Spectator {
 		private Color32 playerColor; 
 		private Team team;
-		private Resources playerResources; 
+		private Resources_Tab._Resources playerResources; 
 		private Research playerResearch;
+		// IFFUCKED: check here this might be a cause, its not a great idea to do this but i don't have a clue how else i can do it(without changing the code in its entirity)
+		protected static _Prototype<Building_Abstract> cur_buildProto;
 		public Player(string playerName, Color32 igColor): base(playerName){
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
-			this.playerResources=new Resources();
+			this.playerResources=new Resources_Tab._Resources();
 			this.playerResearch= new Research();
 			this.pCamera.AddComponent<GameEyes>();
 			UpdateAvailableBuilds();
@@ -70,15 +86,15 @@ namespace Kara.Playables{
 				button.name=("ButtonBuilding"+(++i));
 
 				button.transform.SetParent(GameObject.Find("Buildings").transform);
-				button.transform.position=new Vector3(500,128,0);
+					
 				
 				button.GetComponent<Button>().image.sprite=item.getIcn(); 
 				button.GetComponent<Button>().onClick.AddListener(()=>{
-					Capital._Capital_Prototype cp= new Capital._Capital_Prototype(true);
-					
-					GameEyes.AoClickEsq += (instProt);
-					GameEyes.AoClickDir+= (cancProt);
-					GameEyes.Waiting+=(updatePos);
+						item._gm_inst_now(); 
+						cur_buildProto=item;
+						GameEyes.AoClickEsq += (instProt);
+						GameEyes.AoClickDir+= (cancProt);
+						GameEyes.Waiting+=(updatePos);
 					});				
 			
 			}
@@ -88,23 +104,27 @@ namespace Kara.Playables{
 			RaycastHit hit;
 			Ray ray = pCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-				Capital._Capital_Prototype._capital_Preview(hit.point);
+				cur_buildProto.obj_Preview(hit.point);
+				
 			}
 		}
 		void cancProt(){
 			GameEyes.Waiting -=(updatePos); 
 			GameEyes.AoClickEsq -= (instProt);
 			GameEyes.AoClickDir -=(cancProt);
-			Capital._Capital_Prototype._Capital_Prototype_Destroy();
+			cur_buildProto._gm_dest_now(); 
+			
 		}
 		
 		void instProt(){
 			GameEyes.Waiting -= (updatePos);
 			GameEyes.AoClickEsq -= (instProt);
 			GameEyes.AoClickDir -= (cancProt);
-			GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
-			t.GetComponent<MeshRenderer>().material=UnityEngine.Resources.Load<Material>("WoodHouse");
-			Capital._Capital_Prototype._Capital_Prototype_Destroy();
+			cur_buildProto._gm_orig_jit(cur_buildProto.getObj_Prtp().transform);
+			//GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
+			//t.GetComponent<MeshRenderer>().material=UnityEngine.Resources.Load<Material>("WoodHouse");
+			cur_buildProto._gm_dest_now(); 
+			//Capital._Capital_Prototype._Capital_Prototype_Destroy();
 			
 			
 		}

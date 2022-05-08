@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Kara.Playables; 
+using Kara.Playables;
+using Kara.Entities;  
 using UnityEngine;
-
 namespace Kara.Playables{
     public class GameEyes : MonoBehaviour{
 		public delegate void OnClick();
@@ -36,6 +36,7 @@ namespace Kara.Playables{
         	if (Input.GetMouseButtonDown(1) && AoClickDir != null){
             	AoClickDir();
         	}
+			
 			float x = 0, y = 0, z = 0;
 			float speed = scrollSpeed * Time.deltaTime;
 

@@ -23,5 +23,8 @@ namespace Kara.Playables
 		GameObject getObj_Prtp();
 		void obj_Preview(Vector3 pos);
 		Sprite getIcn();
+		void _gm_inst_now(); 
+		void _gm_dest_now();
+		void _gm_orig_jit(Transform space); 
 	}
 }
