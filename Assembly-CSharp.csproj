@@ -48,11 +48,11 @@
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/TerrainGeneral.cs" />
      <Compile Include="Assets/GameBoard.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Ocean/OceanGeneral.cs" />
+     <Compile Include="Assets/Playables/Resources_Tab.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Building_Abstract.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/DayNightCycle.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/PerlinNoise.cs" />
      <Compile Include="Assets/Playables/Player.cs" />
-     <Compile Include="Assets/Playables/Resources_Tab.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -722,11 +722,11 @@
     <Reference Include="Unity.Searcher.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>

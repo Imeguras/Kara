@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 332898667}
   m_Layer: 5
   m_Name: Wood
-  m_TagString: Untagged
+  m_TagString: ResourcesUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 903513525}
   m_Layer: 5
   m_Name: Iron
-  m_TagString: Untagged
+  m_TagString: ResourcesUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 1113930015}
   m_Layer: 5
   m_Name: Food
-  m_TagString: Untagged
+  m_TagString: ResourcesUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1913791731}
   m_Layer: 5
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: ResourcesUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 1945199244}
   m_Layer: 5
   m_Name: Gold
-  m_TagString: Untagged
+  m_TagString: ResourcesUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -39,8 +39,8 @@ public class GameBoard : MonoBehaviour{
 
 		players= new List<Player>();
 		Player me = new Player("Imeguras", new Color32(0,0,255,255));
-
 		me.getCurCamera(ref curScreenCamera); 
+		curScreenCamera.AddComponent<Resources_Tab>().setTrackingPlayer(me);
 		curScreenCamera.transform.position=new Vector3 (100, 50, 100); 
 		curScreenCamera.transform.Rotate(new Vector3(65, 0,0));
 		//curScreenCamera.GetComponent<GameEyes>().terrainTrack=td;

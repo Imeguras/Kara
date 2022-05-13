@@ -128,6 +128,9 @@ namespace Kara.Playables{
 			
 			
 		}
+		public Resources_Tab._Resources getPlayerResources(){
+			return this.playerResources;
+		}
 		
 	}
 
