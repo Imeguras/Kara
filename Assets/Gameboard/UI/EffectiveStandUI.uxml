@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Gameboard/UI/EffectiveStandUI.uss?fileID=7433441132597879392&amp;guid=0541cc3de0ee61d71a5176eb52592617&amp;type=3#EffectiveStandUI" />
+    <ui:GroupBox name="Canvas" style="min-width: 100%; min-height: 100%; height: 100%; width: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute; flex-direction: column-reverse; top: 0; left: 1px; justify-content: flex-start; align-items: stretch;">
+        <ui:VisualElement name="PermanentBar" style="justify-content: flex-end; top: 0;">
+            <ui:GroupBox name="Resources" style="height: 100%; align-items: center; left: 0; top: 0; width: 80%; max-width: 80%; max-height: 100%; min-width: 60%; min-height: 100%; flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-bottom: 0; padding-top: 0; padding-left: 0; padding-right: 10px; justify-content: center; flex-grow: 1; flex-shrink: 1; right: 0; bottom: 0;">
+                <ui:GroupBox name="FoodGroup" class="ResourcesGroup">
+                    <ui:VisualElement name="FoodIcn" class="ResourcesIcn" style="background-image: resource(&apos;food&apos;);" />
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="FoodVar" class="ResourcesValuesLbl" />
+                </ui:GroupBox>
+                <ui:GroupBox name="WoodGroup" class="ResourcesGroup">
+                    <ui:VisualElement name="WoodIcn" class="ResourcesIcn" style="background-image: resource(&apos;wood&apos;);" />
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="WoodVar" class="ResourcesValuesLbl" />
+                </ui:GroupBox>
+                <ui:GroupBox name="StoneGroup" class="ResourcesGroup">
+                    <ui:VisualElement name="StoneIcn" class="ResourcesIcn" style="background-image: resource(&apos;stone&apos;);" />
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="StoneVar" class="ResourcesValuesLbl" />
+                </ui:GroupBox>
+                <ui:GroupBox name="IronGroup" class="ResourcesGroup">
+                    <ui:VisualElement name="IronIcn" class="ResourcesIcn" style="background-image: resource(&apos;iron&apos;);" />
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="IronVar" class="ResourcesValuesLbl" />
+                </ui:GroupBox>
+                <ui:GroupBox name="GoldGroup" class="ResourcesGroup">
+                    <ui:VisualElement name="GoldIcn" class="ResourcesIcn" style="background-image: resource(&apos;gold&apos;);" />
+                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="GoldVar" class="ResourcesValuesLbl" />
+                </ui:GroupBox>
+            </ui:GroupBox>
+            <ui:GroupBox name="Cameras">
+                <ui:VisualElement name="MainCamera" class="CamerasSquare" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+        <ui:GroupBox name="Mid" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-direction: row; align-items: flex-end;">
+            <ui:VisualElement name="ObjectPedia" style="background-image: none; background-color: rgba(255, 255, 255, 0.5); color: rgb(210, 210, 210); display: none;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ObjectName" style="font-size: 20px; -unity-text-align: middle-left; color: rgb(70, 140, 210); padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Buildings" style="width: 40%; height: 40%; align-items: stretch; flex-direction: row; justify-content: flex-start; right: 0; left: 0; position: relative;" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>

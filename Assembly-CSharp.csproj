@@ -39,6 +39,7 @@
      <Compile Include="Assets/Playables/GameEyes.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/WaterErosion.cs" />
      <Compile Include="Assets/Gameboard/Movables/Citizen.cs" />
+     <Compile Include="Assets/Gameboard/UI/CanvasInterface.cs" />
      <Compile Include="Assets/Playables/Team.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Capital/Capital.cs" />
      <Compile Include="Assets/Gameboard/Movables/Unit.cs" />
@@ -51,8 +52,11 @@
      <Compile Include="Assets/Playables/Resources_Tab.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Building_Abstract.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/DayNightCycle.cs" />
+     <Compile Include="Assets/Gameboard/UI/EffectiveStandUI.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/PerlinNoise.cs" />
      <Compile Include="Assets/Playables/Player.cs" />
+     <None Include="Assets/Gameboard/UI/EffectiveStandUI.uxml" />
+     <None Include="Assets/Gameboard/UI/EffectiveStandUI.uss" />
     <Reference Include="UnityEngine">
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -689,6 +693,9 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.003">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
@@ -707,6 +714,9 @@
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VectorGraphics">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
@@ -716,17 +726,20 @@
     <Reference Include="Unity.VisualScripting.State.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.003">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
@@ -748,6 +761,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
@@ -778,6 +794,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VectorGraphics.Editor">
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>

@@ -72,7 +72,8 @@ namespace Kara.Playables{
 		public Player(string playerName, Color32 igColor): base(playerName){
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
-			this.playerResources=new Resources_Tab._Resources();
+			this.playerResources=new Resources_Tab._Resources(100,100,100,100,100);
+
 			this.playerResearch= new Research();
 			this.pCamera.AddComponent<GameEyes>();
 			UpdateAvailableBuilds();
@@ -80,14 +81,16 @@ namespace Kara.Playables{
 		}
 		public void UpdateAvailableBuilds(){
 			int i=0;
-			GameObject gm=UnityEngine.Resources.Load<GameObject>("ButtonBuilding");
+			//GameObject gm=UnityEngine.Resources.Load<GameObject>("ButtonBuilding");
+
 			foreach (var item in playerResearch.availableBuild){
-				GameObject button=GameObject.Instantiate(gm,Vector3.zero, Quaternion.identity);
+				item.getIcn(); 
+				/*GameObject button=GameObject.Instantiate(gm,Vector3.zero, Quaternion.identity);
 				button.name=("ButtonBuilding"+(++i));
 
 				button.transform.SetParent(GameObject.Find("Buildings").transform);
-					
-				
+				button.GetComponent<RectTransform>().anchoredPosition3D=Vector3.zero;
+				//button.transform.positionVector3.zero;
 				button.GetComponent<Button>().image.sprite=item.getIcn(); 
 				button.GetComponent<Button>().onClick.AddListener(()=>{
 						item._gm_inst_now(); 
@@ -95,8 +98,9 @@ namespace Kara.Playables{
 						GameEyes.AoClickEsq += (instProt);
 						GameEyes.AoClickDir+= (cancProt);
 						GameEyes.Waiting+=(updatePos);
-					});				
-			
+					});			
+					*/	
+				
 			}
 		}
 	 
@@ -114,8 +118,7 @@ namespace Kara.Playables{
 			GameEyes.AoClickDir -=(cancProt);
 			cur_buildProto._gm_dest_now(); 
 			
-		}
-		
+		}		
 		void instProt(){
 			GameEyes.Waiting -= (updatePos);
 			GameEyes.AoClickEsq -= (instProt);
@@ -128,6 +131,16 @@ namespace Kara.Playables{
 			
 			
 		}
+		
+		void checkInteractable(){
+			RaycastHit hit;
+			Ray ray = pCamera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+				cur_buildProto.obj_Preview(hit.point);
+				
+			}
+		}
+		
 		public Resources_Tab._Resources getPlayerResources(){
 			return this.playerResources;
 		}
