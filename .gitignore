@@ -25,6 +25,8 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
+*.code-workspace
 
 # Gradle cache directory
 .gradle/
@@ -71,20 +73,12 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-Kara_Data/
-
-obj/
 UnityPlayer.so
 *.x86_64
-Logs/
 *.log
-**.meta
-Temp/
-
-.vscode/
 
 New Terrain*.asset
-*.code-workspace
+
 
 
 

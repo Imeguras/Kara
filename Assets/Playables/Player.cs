@@ -72,7 +72,10 @@ namespace Kara.Playables{
 		public Player(string playerName, Color32 igColor): base(playerName){
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
-			this.playerResources=new Resources_Tab._Resources(100,100,100,100,100);
+			this.playerResources= Resources_Tab._Resources.CreateInstance<Resources_Tab._Resources>(); 
+			this.playerResources.Init(100,100,100,100,100);
+			
+			//new Resources_Tab._Resources(100,100,100,100,100);
 
 			this.playerResearch= new Research();
 			this.pCamera.AddComponent<GameEyes>();

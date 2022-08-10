@@ -28,7 +28,6 @@ namespace Kara.Playables{
 		void Update () {
 			if(Waiting!= null){
 				Waiting();
-
 			}
 			if (Input.GetMouseButtonDown(0) && AoClickEsq != null ){
            		AoClickEsq();
