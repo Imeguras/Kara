@@ -13,39 +13,61 @@ namespace Kara.Playables
 		public Player tracking; 
 		public void setTrackingPlayer(Player track){
 			tracking=track;
-			track.getPlayerResources();
+			_Resources playerResources = track.getPlayerResources();
 			GameObject trackCanvas = GameObject.Find("Canvas");
 			UIDocument docum= trackCanvas.GetComponent<UIDocument>();
-				//TODO: unboogaloo this
-				//var insideCanvas = docum.rootVisualElement.Children().First().Children().First().Children().First().Children();
+			
+		
+				var foodUI = docum.rootVisualElement.Q<Label>(name: "FoodVar");
+				var woodUI = docum.rootVisualElement.Q<Label>(name: "WoodVar");
+				var stoneUI = docum.rootVisualElement.Q<Label>(name: "StoneVar");
+				var ironUI= docum.rootVisualElement.Q<Label>(name: "IronVar");
+				var goldUI = docum.rootVisualElement.Q<Label>(name: "GoldVar");
+			if(playerResources!= null){
 				
-				//insideCanvas.ElementAt(0).ElementAt(1).Bind(tracking.getPlayerResources().food);
-					//resourcesUI.Add(new Tuple<string, VisualElement>(k.name, k));
-				
-			}
+				SerializedObject pR = new UnityEditor.SerializedObject(playerResources);
+				//Next time read the fine print... Unity and its internall boogaloo never cease to amuse me...
+				//The comment above was because i thought that you had to translate the your variables to some kind of internal meta variable one, aparently not unity cannot handle int blah{get;set;}... 
+				SerializedProperty foodProp = pR.FindProperty("food");
+			
+				SerializedProperty woodProp = pR.FindProperty("wood");
+				SerializedProperty stoneProp = pR.FindProperty("stone");
+				SerializedProperty ironProp = pR.FindProperty("iron");
+				SerializedProperty goldProp = pR.FindProperty("gold");
 
-		public class _Resources : ScriptableObject{
-			[SerializeField]
-			public uint food{get; set;}
-			[SerializeField]
-			public uint wood {get; set;}
-			[SerializeField]
-			public uint stone{get; set;}
-			[SerializeField]
-			public uint gold{get; set;}
-			[SerializeField]
-			public uint iron{get; set;}
-			//basically a constructor cause unity has a problem with it 
-			public void Init(uint food=0, uint wood=0,uint stone=0, uint gold=0, uint iron=0){
-					
-				this.food=food; 
-				this.wood=wood; 
-				this.stone=stone; 
-				this.gold=gold; 
-				this.iron=iron;
-			
-			}
-			
-    	}
-	}   
+				foodUI.BindProperty(foodProp);
+				woodUI.BindProperty(woodProp);
+				stoneUI.BindProperty(stoneProp);
+				ironUI.BindProperty(ironProp);
+				goldUI.BindProperty(goldProp);
+
+ 			}else{
+				foodUI.Unbind();
+				woodUI.Unbind();
+				stoneUI.Unbind();
+				ironUI.Unbind();
+				goldUI.Unbind();
+			}	
+		}
+	}
+	public class _Resources : ScriptableObject{
+		public int food=0; 
+		public int wood=0; 
+		public int stone=0;
+		public int iron=0;
+		public int gold=0;
+		//basically a constructor cause unity has a problem with it 
+		public void Init(int food=0, int wood=0,int stone=0, int iron=0, int gold=0){
+				
+			this.food=food; 
+			this.wood=wood; 
+			this.stone=stone; 
+			this.iron=iron;
+			this.gold=gold; 
+		
+		}
+		
+		
+	}
+
 }

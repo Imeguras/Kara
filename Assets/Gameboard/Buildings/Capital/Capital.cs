@@ -54,7 +54,7 @@ namespace Kara.Entities{
 				}
 			}
 			public void _gm_dest_now(){
-				Destroy(_cpt_prtp.gameObject);
+				DestroyImmediate(_cpt_prtp.gameObject);
 			}
 
 			public void _gm_orig_jit(Transform space){

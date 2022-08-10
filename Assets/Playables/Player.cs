@@ -63,19 +63,17 @@ namespace Kara.Playables{
 		}
     }
 	public class Player : Spectator {
-		private Color32 playerColor; 
-		private Team team;
-		private Resources_Tab._Resources playerResources; 
-		private Research playerResearch;
+		protected Color32 playerColor; 
+		protected Team team;
+		protected _Resources playerResources; 
+		protected Research playerResearch;
 		// IFFUCKED: check here this might be a cause, its not a great idea to do this but i don't have a clue how else i can do it(without changing the code in its entirity)
 		protected static _Prototype<Building_Abstract> cur_buildProto;
 		public Player(string playerName, Color32 igColor): base(playerName){
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
-			this.playerResources= Resources_Tab._Resources.CreateInstance<Resources_Tab._Resources>(); 
+			this.playerResources= _Resources.CreateInstance<_Resources>(); 
 			this.playerResources.Init(100,100,100,100,100);
-			
-			//new Resources_Tab._Resources(100,100,100,100,100);
 
 			this.playerResearch= new Research();
 			this.pCamera.AddComponent<GameEyes>();
@@ -83,7 +81,7 @@ namespace Kara.Playables{
 			
 		}
 		public void UpdateAvailableBuilds(){
-			int i=0;
+			//int i=0;
 			//GameObject gm=UnityEngine.Resources.Load<GameObject>("ButtonBuilding");
 
 			foreach (var item in playerResearch.availableBuild){
@@ -130,7 +128,7 @@ namespace Kara.Playables{
 			//GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
 			//t.GetComponent<MeshRenderer>().material=UnityEngine.Resources.Load<Material>("WoodHouse");
 			cur_buildProto._gm_dest_now(); 
-			//Capital._Capital_Prototype._Capital_Prototype_Destroy();
+			
 			
 			
 		}
@@ -144,7 +142,7 @@ namespace Kara.Playables{
 			}
 		}
 		
-		public Resources_Tab._Resources getPlayerResources(){
+		public _Resources getPlayerResources(){
 			return this.playerResources;
 		}
 		
