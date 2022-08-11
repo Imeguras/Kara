@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=90bf5a104116beb8d81aa3828c337e14&amp;type=3#MainMenu" />
+    <ui:GroupBox name="Canvas" style="min-width: 100%; min-height: 100%; height: 100%; width: 100%;  position: absolute;">
+		<ui:GroupBox name="Menu" class="CenterMenu">
+			<ui:Label text="Kara" display-tooltip-when-elided="true" name="Kara" class="HeaderBigKara" />
+			<ui:Button name="BtnMp" class="ButtonHeaderLarge" text="Multiplayer" />
+			<ui:Button name="BtnSet" class="ButtonHeaderLarge" text="Settings" />
+			<ui:Button name="BtnQuit" class="ButtonHeaderLarge" text="Exit" />
+		</ui:GroupBox>
+	</ui:GroupBox>
+</ui:UXML>
