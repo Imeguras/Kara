@@ -5,17 +5,23 @@ using Kara.Entities;
 using Kara.ProceduralGen;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Kara_.Assets.Settings.General_Settings;
+using Kara_.Assets.Settings.Player_Settings;
 public class GameBoard : MonoBehaviour{
 	public readonly static string gme_terrain_tag="Earth";
 	public readonly static string gme_ocean_tag="Ocean";
 
-
+	protected GameSettings gameSettings;
+	protected ControlSettings controlSettings;
     private GameObject gme_terrain;
 	private GameObject gme_ocean; 
 	private List<Player> players;
 	public GameObject curScreenCamera;
 	public GameObject sun;  
     void Start(){
+		gameSettings=GameSettings.CreateInstance<GameSettings>();
+		gameSettings.Init(); 
+		controlSettings=ControlSettings.CreateInstance<ControlSettings>();
 		
 		GraphicsSettings.lightsUseLinearIntensity=true;
 		GraphicsSettings.lightsUseColorTemperature=true;

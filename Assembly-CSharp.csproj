@@ -40,6 +40,7 @@
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/WaterErosion.cs" />
      <Compile Include="Assets/Gameboard/Movables/Citizen.cs" />
      <Compile Include="Assets/Gameboard/UI/CanvasInterface.cs" />
+     <Compile Include="Assets/Settings/Player Settings/ControlSettings.cs" />
      <Compile Include="Assets/Playables/Team.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Capital/Capital.cs" />
      <Compile Include="Assets/Gameboard/Movables/Unit.cs" />
@@ -50,13 +51,16 @@
      <Compile Include="Assets/GameBoard.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Ocean/OceanGeneral.cs" />
      <Compile Include="Assets/Playables/Resources_Tab.cs" />
-     <Compile Include="Assets/Player Settings/Control_Settings.cs" />
+     <Compile Include="Assets/Scenes/MainMenu/MainMenu.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Building_Abstract.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/DayNightCycle.cs" />
      <Compile Include="Assets/Gameboard/UI/EffectiveStandUI.cs" />
+     <Compile Include="Assets/Settings/General Settings/GameSettings.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/PerlinNoise.cs" />
      <Compile Include="Assets/Playables/Player.cs" />
      <None Include="Assets/Gameboard/UI/EffectiveStandUI.uxml" />
+     <None Include="Assets/Scenes/MainMenu/MainMenu.uss" />
+     <None Include="Assets/Scenes/MainMenu/MainMenu.uxml" />
      <None Include="Assets/Gameboard/UI/EffectiveStandUI.uss" />
     <Reference Include="UnityEngine">
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
