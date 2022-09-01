@@ -44,7 +44,7 @@ public class GameBoard : MonoBehaviour{
 		sun.AddComponent<DayNightCycle>();
 
 		players= new List<Player>();
-		Player me = new Player("Imeguras", new Color32(0,0,255,255));
+		Player me = new Player("Imeguras", new Color32(0,0,255,255), controlSettings);
 		me.getCurCamera(ref curScreenCamera); 
 		var resource_tab =curScreenCamera.AddComponent<Resources_Tab>();
 		resource_tab.setTrackingPlayer(me);

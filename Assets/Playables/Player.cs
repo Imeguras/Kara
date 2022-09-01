@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Kara.Entities;
+using Kara_.Assets.Settings.Player_Settings;
 namespace Kara.Playables{
 	public class Spectator{
 		protected int uuid;
@@ -18,14 +19,15 @@ namespace Kara.Playables{
 		protected List<GameObject> sleepingCameras; 
 		protected GameObject pCamera;
 		protected GameObject curCamera; 
-		
-		public Spectator(string playerName){
+		protected ControlSettings settings;
+		public Spectator(string playerName, ControlSettings settings){
 			this.uuid=playerName.GetHashCode();
 			this.playerName=playerName; 
 			sleepingCameras=new List<GameObject>();
-			 
 			creatCamera(ref pCamera);
-		
+			this.settings=settings;
+			var k=this.pCamera.AddComponent<GameEyes>();
+			k.bindSettings(settings);
 			curCamera=pCamera; 
 		}
 		public int getUUID(){
@@ -69,24 +71,25 @@ namespace Kara.Playables{
 		protected Research playerResearch;
 		// IFFUCKED: check here this might be a cause, its not a great idea to do this but i don't have a clue how else i can do it(without changing the code in its entirity)
 		protected static _Prototype<Building_Abstract> cur_buildProto;
-		public Player(string playerName, Color32 igColor): base(playerName){
+		public Player(string playerName, Color32 igColor, ControlSettings settings): base(playerName, settings){
+	     
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
 			this.playerResources= _Resources.CreateInstance<_Resources>(); 
 			this.playerResources.Init(100,100,100,100,100);
-
+			
 			this.playerResearch= new Research();
-			this.pCamera.AddComponent<GameEyes>();
+			
 			UpdateAvailableBuilds();
 			
 		}
 		public void UpdateAvailableBuilds(){
-			//int i=0;
-			//GameObject gm=UnityEngine.Resources.Load<GameObject>("ButtonBuilding");
+			int i=0;
+			GameObject gm=UnityEngine.Resources.Load<GameObject>("ButtonBuilding");
 
-			foreach (var item in playerResearch.availableBuild){
+			/*foreach (var item in playerResearch.availableBuild){
 				item.getIcn(); 
-				/*GameObject button=GameObject.Instantiate(gm,Vector3.zero, Quaternion.identity);
+				GameObject button=GameObject.Instantiate(gm,Vector3.zero, Quaternion.identity);
 				button.name=("ButtonBuilding"+(++i));
 
 				button.transform.SetParent(GameObject.Find("Buildings").transform);
@@ -96,13 +99,13 @@ namespace Kara.Playables{
 				button.GetComponent<Button>().onClick.AddListener(()=>{
 						item._gm_inst_now(); 
 						cur_buildProto=item;
-						GameEyes.AoClickEsq += (instProt);
-						GameEyes.AoClickDir+= (cancProt);
-						GameEyes.Waiting+=(updatePos);
+						//GameEyes.AoClickEsq += (instProt);
+						//GameEyes.AoClickDir+= (cancProt);
+						//GameEyes.Waiting+=(updatePos);
 					});			
-					*/	
+					
 				
-			}
+			}*/
 		}
 	 
 		public void updatePos(){
@@ -114,16 +117,16 @@ namespace Kara.Playables{
 			}
 		}
 		void cancProt(){
-			GameEyes.Waiting -=(updatePos); 
-			GameEyes.AoClickEsq -= (instProt);
-			GameEyes.AoClickDir -=(cancProt);
+			//GameEyes.Waiting -=(updatePos); 
+			//GameEyes.AoClickEsq -= (instProt);
+			//GameEyes.AoClickDir -=(cancProt);
 			cur_buildProto._gm_dest_now(); 
 			
 		}		
 		void instProt(){
-			GameEyes.Waiting -= (updatePos);
-			GameEyes.AoClickEsq -= (instProt);
-			GameEyes.AoClickDir -= (cancProt);
+			//GameEyes.Waiting -= (updatePos);
+			//GameEyes.AoClickEsq -= (instProt);
+			//GameEyes.AoClickDir -= (cancProt);
 			cur_buildProto._gm_orig_jit(cur_buildProto.getObj_Prtp().transform);
 			//GameObject t=GameObject.Instantiate<GameObject>(Capital._Capital_Prototype._getObj_Prtp(), Capital._Capital_Prototype._getObj_Prtp().transform.position,  Capital._Capital_Prototype._getObj_Prtp().transform.rotation);
 			//t.GetComponent<MeshRenderer>().material=UnityEngine.Resources.Load<Material>("WoodHouse");

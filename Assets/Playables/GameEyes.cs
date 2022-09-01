@@ -1,62 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Kara.Playables;
 using Kara.Entities;  
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Kara_.Assets.Settings.Player_Settings;
+
+
 namespace Kara.Playables{
     public class GameEyes : MonoBehaviour{
-		public delegate void OnClick();
-    	public static event OnClick AoClickEsq;
-    	public static event OnClick AoClickDir;
-		public static event OnClick Waiting;
+		
+		public PlayerControls controls;
+		protected ControlSettings controlSettings;
+		
 		private Vector3 desiredPosition;
-
-		public float boxPanBorder = 30;
-		public float scrollSpeed = 200;
-		public float treedrise = 200;
 		
 		private Vector3 mins; 
 		private Vector3 maxs; 
+		private float speed;
+		
+		
+		private void OnEnable(){
+			controls.Enable();
+		}
+	
+		void Awake(){
+			// controls is equal load Assets/Settings/PlayerControls
+			controls= new PlayerControls();
+			controls.TERRA_INT.Pan.performed += vec => pan(vec.ReadValue<Vector2>());
+			controls.TERRA_INT.PanMouse.performed += vec => {
+				Vector2 mouse = vec.ReadValue<Vector2>();
+					//Normalize the mouse input based on screen size
+					mouse.x = (2*mouse.x/Screen.width)-1;
+					mouse.y = (2*mouse.y/Screen.height)-1;
+					
+					if(Math.Abs(mouse.x)>=0.8f||Math.Abs(mouse.y)>=0.6f){
+						pan(mouse);
+					}
+			};
+			
+
+		}
 		void Start () {
 			mins = new Vector3(0f, 15f, 4f);
 			maxs = new Vector3(500f, 90f, 504f);
+			//controlSettings.sensitivityMousePan
+			speed =  40 * Time.deltaTime;
 			desiredPosition = transform.position;
 			
 		}
+		public void bindSettings(ControlSettings settings){
+			controlSettings=settings;
+		}
 		
-		
-		void Update () {
-			if(Waiting!= null){
-				Waiting();
-			}
-			if (Input.GetMouseButtonDown(0) && AoClickEsq != null ){
-           		AoClickEsq();
-        	}
-        	if (Input.GetMouseButtonDown(1) && AoClickDir != null){
-            	AoClickDir();
-        	}
-			
-			float x = 0, y = 0, z = 0;
-			float speed = scrollSpeed * Time.deltaTime;
-
-			if (Input.mousePosition.x < boxPanBorder)
-				x -= speed;
-			else if (Input.mousePosition.x > Screen.width - boxPanBorder)
-				x += speed;
-				
-			if (Input.mousePosition.y < boxPanBorder)
-				z -= speed;
-			else if (Input.mousePosition.y > Screen.height - boxPanBorder)
-				z += speed;
-			y += Input.GetAxis("Mouse ScrollWheel") * treedrise;
-			Vector3 move = new Vector3(x,y,z) + transform.position;
-			move.x = Mathf.Clamp (move.x, mins.x, maxs.x);
-			//move.y = Mathf.Clamp (move.y, mins.y, maxs.y)+(int)terrainTrack.GetHeight((int)x,(int)z);
-			move.y = Mathf.Clamp (move.y, mins.y, maxs.y);
-			move.z = Mathf.Clamp (move.z, mins.z, maxs.z);
-			
-			desiredPosition = move;
+		void pan(Vector2 value){
+			//desired position is the current position plus the value of the mouse movement
+			desiredPosition+= new Vector3(value.x*speed, 0, value.y*speed);
+			desiredPosition.x=Math.Clamp(desiredPosition.x, mins.x, maxs.x);
+			desiredPosition.z=Math.Clamp(desiredPosition.z, mins.z, maxs.z);
+		}
+		private void FixedUpdate(){
 			transform.position = Vector3.Lerp(transform.position,desiredPosition,0.2f);
+		}
+		private void OnDisable(){
+			controls.Disable();
 		}
     }
 }

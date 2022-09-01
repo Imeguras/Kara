@@ -29,7 +29,6 @@ namespace Kara.Playables
 				//Next time read the fine print... Unity and its internall boogaloo never cease to amuse me...
 				//The comment above was because i thought that you had to translate the your variables to some kind of internal meta variable one, aparently not unity cannot handle int blah{get;set;}... 
 				SerializedProperty foodProp = pR.FindProperty("food");
-			
 				SerializedProperty woodProp = pR.FindProperty("wood");
 				SerializedProperty stoneProp = pR.FindProperty("stone");
 				SerializedProperty ironProp = pR.FindProperty("iron");
