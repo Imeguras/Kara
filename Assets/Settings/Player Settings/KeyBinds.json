@@ -1,0 +1,32 @@
+{
+	"name": "PlayerControls",
+	"maps": [{
+		"name": "UI_ESC_Menu",
+		"id": "893a7abb-3b4a-4311-9c43-29e63278d85b",
+		"actions": [
+			{
+				"name": "Click",
+				"type": "Button",
+				"id": "0119cc03-7b0a-404c-b555-a830f96e8e11",
+				"expectedControlType": "Button",
+				"processors": "",
+				"interactions": "",
+				"initialStateCheck": false
+			}
+		],
+		"bindings": [
+			{
+				"name": "",
+				"id": "8677b74f-133f-4980-8dcf-01d55b82bb5d",
+				"path": "<Keyboard>/enter",
+				"interactions": "Press(behavior=1)",
+				"processors": "",
+				"groups": "",
+				"action": "Click",
+				"isComposite": false,
+				"isPartOfComposite": false
+			}
+		]
+	}],
+	"controlSchemes": []
+}

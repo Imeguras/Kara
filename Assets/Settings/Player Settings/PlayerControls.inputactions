@@ -1,0 +1,163 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "UI_ESC_Menu",
+            "id": "893a7abb-3b4a-4311-9c43-29e63278d85b",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "0119cc03-7b0a-404c-b555-a830f96e8e11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8677b74f-133f-4980-8dcf-01d55b82bb5d",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33c44924-baf3-4d36-b88c-c2753d09cd10",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TERRA_INT",
+            "id": "6aba0455-2b2f-4f3d-90a2-db96814856ce",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "PassThrough",
+                    "id": "4f3ffcb9-b782-4a16-a9c1-73b3597307da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pan",
+                    "type": "Value",
+                    "id": "8a008288-8156-46e0-96f6-4275f79b01bf",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PanMouse",
+                    "type": "Value",
+                    "id": "6a24e500-f460-416f-b0af-7a535b87c318",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "PanKeyboard",
+                    "id": "d369945e-eacc-45ff-848a-a483c1eab7ee",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pan",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "76c42d59-7afd-49fe-9b31-37d7ed5a1900",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Pan",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "da3cd35d-998b-4834-a894-5181b9677fcf",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Pan",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "fad3ef71-4f46-4c5c-bb96-e5b325303557",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Pan",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "95da51e1-0c7a-4548-9421-279bf7872639",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Pan",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "73281be0-7888-42df-87a8-10ffe9848d18",
+                    "path": "<Mouse>/Position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "PanMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Standard",
+            "bindingGroup": "Standard",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
