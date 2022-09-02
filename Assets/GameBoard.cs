@@ -19,9 +19,14 @@ public class GameBoard : MonoBehaviour{
 	public GameObject curScreenCamera;
 	public GameObject sun;  
     void Start(){
+		
+		//Server Stuff
 		gameSettings=GameSettings.CreateInstance<GameSettings>();
 		gameSettings.Init(); 
+
+		//Client Stuff
 		controlSettings=ControlSettings.CreateInstance<ControlSettings>();
+		controlSettings.Init(); 
 		
 		GraphicsSettings.lightsUseLinearIntensity=true;
 		GraphicsSettings.lightsUseColorTemperature=true;

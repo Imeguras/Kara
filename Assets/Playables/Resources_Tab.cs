@@ -16,8 +16,6 @@ namespace Kara.Playables
 			_Resources playerResources = track.getPlayerResources();
 			GameObject trackCanvas = GameObject.Find("Canvas");
 			UIDocument docum= trackCanvas.GetComponent<UIDocument>();
-			
-		
 				var foodUI = docum.rootVisualElement.Q<Label>(name: "FoodVar");
 				var woodUI = docum.rootVisualElement.Q<Label>(name: "WoodVar");
 				var stoneUI = docum.rootVisualElement.Q<Label>(name: "StoneVar");

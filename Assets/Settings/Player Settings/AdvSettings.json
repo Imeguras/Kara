@@ -1,3 +1,4 @@
 {
-	"scrollWheelSpeed": 40
+	"__MousePanSensitivity": 40,
+	"__BoxPanBorder": 0.8
 }

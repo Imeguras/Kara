@@ -43,8 +43,7 @@ namespace Kara.Playables{
 		void Start () {
 			mins = new Vector3(0f, 15f, 4f);
 			maxs = new Vector3(500f, 90f, 504f);
-			//controlSettings.sensitivityMousePan
-			speed =  40 * Time.deltaTime;
+			speed =  controlSettings.mousePanSensitivity * Time.deltaTime;
 			desiredPosition = transform.position;
 			
 		}
