@@ -29,10 +29,10 @@
             </ui:GroupBox>
         </ui:VisualElement>
         <ui:GroupBox name="Mid" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; flex-direction: row; align-items: flex-end;">
-            <ui:VisualElement name="ObjectPedia" style="background-image: none; background-color: rgba(255, 255, 255, 0.5); color: rgb(210, 210, 210);">
+            <ui:VisualElement name="ObjectPedia" style="background-image: none; background-color: rgba(255, 255, 255, 0.5); color: rgb(210, 210, 210); display: none; visibility: visible;">
                 <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ObjectName" style="font-size: 20px; -unity-text-align: middle-left; color: rgb(70, 140, 210); padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" />
             </ui:VisualElement>
-            <ui:VisualElement name="Buildings" style="width: 40%; height: 40%; align-items: stretch; flex-direction: row; justify-content: flex-start; right: 0; left: 0; position: relative;" />
+            <ui:VisualElement name="CloningInstances" style="width: 40%; height: 40%; align-items: stretch; flex-direction: row; justify-content: flex-start; right: 0; left: 0; position: relative;" />
         </ui:GroupBox>
     </ui:GroupBox>
 </ui:UXML>

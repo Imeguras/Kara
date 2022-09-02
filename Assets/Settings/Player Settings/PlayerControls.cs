@@ -70,9 +70,9 @@ namespace Kara_.Assets.Settings.Player_Settings
             ""actions"": [
                 {
                     ""name"": ""Select"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""4f3ffcb9-b782-4a16-a9c1-73b3597307da"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -90,6 +90,24 @@ namespace Kara_.Assets.Settings.Player_Settings
                     ""name"": ""PanMouse"",
                     ""type"": ""Value"",
                     ""id"": ""6a24e500-f460-416f-b0af-7a535b87c318"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HoldTillMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""ef4f114e-254c-4ded-b841-c0e17f0bc6fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AwaitMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""ebf25129-9159-4f84-ab89-8f24d58424fb"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -162,6 +180,94 @@ namespace Kara_.Assets.Settings.Player_Settings
                     ""action"": ""PanMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ClickPress"",
+                    ""id"": ""3fdbbd3d-4eeb-4f89-b8e7-da74a3e64e9d"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""3ae6b77f-2930-49bb-b2e3-8654407bedf3"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Standard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""b9f0fcf1-9662-4ef9-a6c7-f4d6cd396b9e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Standard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7661ce17-3222-4485-9086-a75ce8763fcf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Standard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ConfirmDeny"",
+                    ""id"": ""43c87320-a37e-49ae-a5ff-d95002a908e6"",
+                    ""path"": ""1DAxis(minValue=0,whichSideWins=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldTillMouse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6adec22d-62fd-40d6-a338-d542f125ebd6"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldTillMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5db8553e-ab22-4c15-9c6a-984ab29b508a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldTillMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a2cd71c-c3d7-41be-964a-b84a0064892c"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Standard"",
+                    ""action"": ""AwaitMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -193,6 +299,8 @@ namespace Kara_.Assets.Settings.Player_Settings
             m_TERRA_INT_Select = m_TERRA_INT.FindAction("Select", throwIfNotFound: true);
             m_TERRA_INT_Pan = m_TERRA_INT.FindAction("Pan", throwIfNotFound: true);
             m_TERRA_INT_PanMouse = m_TERRA_INT.FindAction("PanMouse", throwIfNotFound: true);
+            m_TERRA_INT_HoldTillMouse = m_TERRA_INT.FindAction("HoldTillMouse", throwIfNotFound: true);
+            m_TERRA_INT_AwaitMouse = m_TERRA_INT.FindAction("AwaitMouse", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -288,6 +396,8 @@ namespace Kara_.Assets.Settings.Player_Settings
         private readonly InputAction m_TERRA_INT_Select;
         private readonly InputAction m_TERRA_INT_Pan;
         private readonly InputAction m_TERRA_INT_PanMouse;
+        private readonly InputAction m_TERRA_INT_HoldTillMouse;
+        private readonly InputAction m_TERRA_INT_AwaitMouse;
         public struct TERRA_INTActions
         {
             private @PlayerControls m_Wrapper;
@@ -295,6 +405,8 @@ namespace Kara_.Assets.Settings.Player_Settings
             public InputAction @Select => m_Wrapper.m_TERRA_INT_Select;
             public InputAction @Pan => m_Wrapper.m_TERRA_INT_Pan;
             public InputAction @PanMouse => m_Wrapper.m_TERRA_INT_PanMouse;
+            public InputAction @HoldTillMouse => m_Wrapper.m_TERRA_INT_HoldTillMouse;
+            public InputAction @AwaitMouse => m_Wrapper.m_TERRA_INT_AwaitMouse;
             public InputActionMap Get() { return m_Wrapper.m_TERRA_INT; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -313,6 +425,12 @@ namespace Kara_.Assets.Settings.Player_Settings
                     @PanMouse.started -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnPanMouse;
                     @PanMouse.performed -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnPanMouse;
                     @PanMouse.canceled -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnPanMouse;
+                    @HoldTillMouse.started -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnHoldTillMouse;
+                    @HoldTillMouse.performed -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnHoldTillMouse;
+                    @HoldTillMouse.canceled -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnHoldTillMouse;
+                    @AwaitMouse.started -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnAwaitMouse;
+                    @AwaitMouse.performed -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnAwaitMouse;
+                    @AwaitMouse.canceled -= m_Wrapper.m_TERRA_INTActionsCallbackInterface.OnAwaitMouse;
                 }
                 m_Wrapper.m_TERRA_INTActionsCallbackInterface = instance;
                 if (instance != null)
@@ -326,6 +444,12 @@ namespace Kara_.Assets.Settings.Player_Settings
                     @PanMouse.started += instance.OnPanMouse;
                     @PanMouse.performed += instance.OnPanMouse;
                     @PanMouse.canceled += instance.OnPanMouse;
+                    @HoldTillMouse.started += instance.OnHoldTillMouse;
+                    @HoldTillMouse.performed += instance.OnHoldTillMouse;
+                    @HoldTillMouse.canceled += instance.OnHoldTillMouse;
+                    @AwaitMouse.started += instance.OnAwaitMouse;
+                    @AwaitMouse.performed += instance.OnAwaitMouse;
+                    @AwaitMouse.canceled += instance.OnAwaitMouse;
                 }
             }
         }
@@ -348,6 +472,8 @@ namespace Kara_.Assets.Settings.Player_Settings
             void OnSelect(InputAction.CallbackContext context);
             void OnPan(InputAction.CallbackContext context);
             void OnPanMouse(InputAction.CallbackContext context);
+            void OnHoldTillMouse(InputAction.CallbackContext context);
+            void OnAwaitMouse(InputAction.CallbackContext context);
         }
     }
 }

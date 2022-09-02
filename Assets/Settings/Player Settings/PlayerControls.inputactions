@@ -46,9 +46,9 @@
             "actions": [
                 {
                     "name": "Select",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "4f3ffcb9-b782-4a16-a9c1-73b3597307da",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -66,6 +66,24 @@
                     "name": "PanMouse",
                     "type": "Value",
                     "id": "6a24e500-f460-416f-b0af-7a535b87c318",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "HoldTillMouse",
+                    "type": "Value",
+                    "id": "ef4f114e-254c-4ded-b841-c0e17f0bc6fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AwaitMouse",
+                    "type": "Value",
+                    "id": "ebf25129-9159-4f84-ab89-8f24d58424fb",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -136,6 +154,94 @@
                     "processors": "",
                     "groups": "Standard",
                     "action": "PanMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "ClickPress",
+                    "id": "3fdbbd3d-4eeb-4f89-b8e7-da74a3e64e9d",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "3ae6b77f-2930-49bb-b2e3-8654407bedf3",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "b9f0fcf1-9662-4ef9-a6c7-f4d6cd396b9e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7661ce17-3222-4485-9086-a75ce8763fcf",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "ConfirmDeny",
+                    "id": "43c87320-a37e-49ae-a5ff-d95002a908e6",
+                    "path": "1DAxis(minValue=0,whichSideWins=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldTillMouse",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6adec22d-62fd-40d6-a338-d542f125ebd6",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldTillMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5db8553e-ab22-4c15-9c6a-984ab29b508a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldTillMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0a2cd71c-c3d7-41be-964a-b84a0064892c",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Standard",
+                    "action": "AwaitMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
