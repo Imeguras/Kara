@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using UnityEngine.UIElements;
-using UnityEditor;
-using UnityEditor.UIElements;
 using Kara_.Assets.Settings.General_Settings;
 using System;
 using System.Collections;
@@ -37,9 +35,9 @@ public class MainMenu : MonoBehaviour{
 		
 		RageSetup();
 		Debug.Log("Exiting gracefully");
-		if(!GameSettings.getEnvironmentMode()){
+		#if UNITY_EDITOR
 			UnityEditor.EditorApplication.isPlaying = false;
-		}
+		#endif
 		Application.Quit();
 		//This should be in theory unreachable
 		RageEnd();

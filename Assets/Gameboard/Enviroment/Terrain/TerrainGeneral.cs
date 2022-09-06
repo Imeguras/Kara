@@ -3,13 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using UnityEngine;
+namespace Kara.ProceduralGen{
+#if UNITY_EDITOR
 using UnityEditor;
-namespace Kara.ProceduralGen
-{
+
 
 	[CustomEditor(typeof(TerrainGeneral))]
-	public class TerrainGeneralEdit : Editor
-	{
+	public class TerrainGeneralEdit : Editor{
 		private TerrainGeneral script;
 
 		private void OnEnable()
@@ -36,7 +36,7 @@ namespace Kara.ProceduralGen
 		}
 
 	}
-
+#endif
     public class TerrainGeneral : MonoBehaviour{
 		private _PerlinNoise perNoise; 
 		private _WaterErosion errosion;

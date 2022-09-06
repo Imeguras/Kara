@@ -110,8 +110,20 @@
     right: 0;
 }
 
+#CloningInstances {
+    width: 40%;
+    height: 40%;
+    flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow: visible;
+	flex-wrap: wrap-reverse;
+    position: relative;
+}	    
+
 #ObjectPedia {
     width: 200px;
     height: 200px;
     border-top-right-radius: 50px;
+    visibility: hidden;
 }

@@ -1,0 +1,19 @@
+{
+  "name": "com.lazy.asset-utility",
+  "version": "1.0.0",
+  "displayName": "Asset Utility",
+  "description": "This package provides tools for making Unity assets easier.",
+  "documentationUrl": "https://github.com/Lazy-Solutions/asset-utility/wiki",
+  "licensesUrl": "https://github.com/Lazy-Solutions/asset-utility/blob/main/LICENSE",
+  "keywords": [
+    "asset",
+    "dev",
+    "development"
+  ],
+  "author": {
+    "name": "Lazy Solutions",
+    "email": "support@lazy.solutions"
+  },
+  "type": "tool",
+  "dependencies": {}
+}

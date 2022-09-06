@@ -1,10 +1,11 @@
 
 using System;
 using UnityEngine;
-using UnityEditor; 
+using UnityEditor;
+using Mirror;
+using Unity.VisualScripting;
 
-namespace Kara.ProceduralGen
-{
+namespace Kara.ProceduralGen{
 	
 	/*[CustomEditor(typeof(DayNightCycle))]
 	public class DayNightCycleEdit : Editor
@@ -28,11 +29,12 @@ namespace Kara.ProceduralGen
 		}
 		
 	}*/
-    public class DayNightCycle: MonoBehaviour{
+    public class DayNightCycle: NetworkBehaviour{
         
 		Light sun;
 		public readonly int ticksCycle=864000;
 		public ign_time currentCycle; 
+		
 		void Start(){
 			currentCycle=new ign_time(0);
 			sun=this.gameObject.AddComponent<Light>();

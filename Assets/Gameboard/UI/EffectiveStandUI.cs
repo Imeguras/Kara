@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -28,3 +28,4 @@ public class EffectiveStandUI : EditorWindow
     }
 	
 }
+#endif

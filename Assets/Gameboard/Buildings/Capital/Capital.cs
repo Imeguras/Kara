@@ -19,7 +19,7 @@ namespace Kara.Entities{
 		public class _Capital : Building_Abstract{
 			
 			public _Capital(string name, uint baseHP, uint morale_receive, uint morale_transmit):base(name, baseHP, morale_receive, morale_transmit){
-				building_Icon=UnityEngine.Resources.Load<Texture2D>("Icn_Capital"); 
+				building_Icon=UnityEngine.Resources.Load<Sprite>("Icn_Capital"); 
 			}	
 		}
 		public class _Capital_Prototype : kp._Prototype<_Capital>{

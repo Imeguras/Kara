@@ -4,11 +4,12 @@ using Kara.Entities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Kara_.Assets.Settings.Player_Settings;
-
+using Mirror;
 
 namespace Kara.Playables{
-    public class GameEyes : MonoBehaviour{
-		
+    public class GameEyes : NetworkBehaviour{
+		//TODO THIS SHOULD BE SPECTATOR
+		public Player target; 
 		public PlayerControls controls;
 		protected ControlSettings controlSettings;
 		
@@ -22,7 +23,7 @@ namespace Kara.Playables{
 		private void OnEnable(){
 			controls.Enable();
 		}
-	
+		
 		void Awake(){
 			// controls is equal load Assets/Settings/PlayerControls
 			controls= new PlayerControls();
@@ -40,13 +41,18 @@ namespace Kara.Playables{
 			
 
 		}
-		void Start () {
+		
+		public override void OnStartClient() {
 			mins = new Vector3(0f, 15f, 4f);
 			maxs = new Vector3(500f, 90f, 504f);
 			speed =  controlSettings.mousePanSensitivity * Time.deltaTime;
 			desiredPosition = transform.position;
 			
 		}
+		public void bindIdentity(Player spec){
+			target=spec;
+		}
+		
 		public void bindSettings(ControlSettings settings){
 			controlSettings=settings;
 		}
@@ -57,9 +63,11 @@ namespace Kara.Playables{
 			desiredPosition.x=Math.Clamp(desiredPosition.x, mins.x, maxs.x);
 			desiredPosition.z=Math.Clamp(desiredPosition.z, mins.z, maxs.z);
 		}
+		
 		private void FixedUpdate(){
 			transform.position = Vector3.Lerp(transform.position,desiredPosition,0.2f);
 		}
+		
 		private void OnDisable(){
 			controls.Disable();
 		}

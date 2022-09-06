@@ -5,66 +5,57 @@ using Kara.Entities;
 using Kara.ProceduralGen;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Mirror; 
 using Kara_.Assets.Settings.General_Settings;
 using Kara_.Assets.Settings.Player_Settings;
-public class GameBoard : MonoBehaviour{
+
+public class GameBoard : NetworkBehaviour {
 	public readonly static string gme_terrain_tag="Earth";
 	public readonly static string gme_ocean_tag="Ocean";
 
-	protected GameSettings gameSettings;
-	protected ControlSettings controlSettings;
     private GameObject gme_terrain;
 	private GameObject gme_ocean; 
-	private List<Player> players;
-	public GameObject curScreenCamera;
-	public GameObject sun;  
+	protected NetworkIdentity id_terrain;
+	protected NetworkIdentity id_ocean; 
+	public GameObject server_builder{get; private set;}
+	public GameObject sun;
+	
     void Start(){
-		
-		//Server Stuff
-		gameSettings=GameSettings.CreateInstance<GameSettings>();
-		gameSettings.Init(); 
-
-		//Client Stuff
-		controlSettings=ControlSettings.CreateInstance<ControlSettings>();
-		controlSettings.Init(); 
-		
 		GraphicsSettings.lightsUseLinearIntensity=true;
 		GraphicsSettings.lightsUseColorTemperature=true;
-		gme_ocean= new GameObject("MainOcean");
-		gme_ocean.tag=gme_ocean_tag; 
-		gme_ocean.AddComponent<OceanGeneral>();
-		gme_ocean.AddComponent<MeshFilter>();
-		gme_ocean.AddComponent<MeshRenderer>();
+			
+			gme_ocean= new GameObject("MainOcean");
+			gme_ocean.tag=gme_ocean_tag; 
+			gme_ocean.AddComponent<OceanGeneral>();
+			gme_ocean.AddComponent<MeshFilter>();
+			gme_ocean.AddComponent<MeshRenderer>();
+			id_ocean=gme_ocean.AddComponent<NetworkIdentity>(); 
+			
+			gme_terrain = new GameObject("MainTerrain"); 
+			gme_terrain.tag=gme_terrain_tag;
+			gme_terrain.AddComponent<Terrain>();
+			gme_terrain.AddComponent<TerrainCollider>();
+			gme_terrain.AddComponent<TerrainGeneral>();
+			id_terrain=gme_terrain.AddComponent<NetworkIdentity>();
 
-		gme_terrain = new GameObject("MainTerrain"); 
-		gme_terrain.tag=gme_terrain_tag;
-		gme_terrain.AddComponent<Terrain>();
-		gme_terrain.AddComponent<TerrainCollider>();
-		gme_terrain.AddComponent<TerrainGeneral>();
+			sun= new GameObject("Sun");
+			sun.AddComponent<DayNightCycle>();
 		
-		
-		
+		server_builder= GameObject.Find("ServerBuilder");
+    }
 
-		sun= new GameObject("Sun");
-		sun.AddComponent<DayNightCycle>();
-
-		players= new List<Player>();
-		Player me = new Player("Imeguras", new Color32(0,0,255,255), controlSettings);
-		me.getCurCamera(ref curScreenCamera); 
-		var resource_tab =curScreenCamera.AddComponent<Resources_Tab>();
-		resource_tab.setTrackingPlayer(me);
-		curScreenCamera.transform.position=new Vector3 (100, 50, 100); 
-		curScreenCamera.transform.Rotate(new Vector3(65, 0,0));
-		//curScreenCamera.GetComponent<GameEyes>().terrainTrack=td;
-
-		players.Add(me); 
+	public void setVisibilityTo(NetworkConnectionToClient obj, bool visible=true){
+		if(visible){
+			NetworkServer.Spawn(gme_ocean);
+			NetworkServer.Spawn(gme_terrain);
+			id_ocean.observers.Add(obj.connectionId, obj);
+			id_terrain.observers.Add(obj.connectionId, obj);
+		}else{
+			id_ocean.observers.Remove(obj.connectionId);
+			id_terrain.observers.Remove(obj.connectionId);
+		}
 		
+	}
+ 
 	
-		
-    }
-
-    // Update is called once per frame
-    void Update(){
-        
-    }
 }

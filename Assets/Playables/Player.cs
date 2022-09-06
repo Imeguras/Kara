@@ -8,14 +8,14 @@ using System;
 using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
-
+using Mirror; 
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor;
-using UnityEditor.UIElements;
+
 using Kara.Entities;
 using Kara_.Assets.Settings.Player_Settings;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 namespace Kara.Playables{
 	public class Spectator{
@@ -26,15 +26,28 @@ namespace Kara.Playables{
 		protected GameObject curCamera; 
 		protected ControlSettings settings;
 		protected IDictionary<InputAction, Action<InputAction.CallbackContext>> _ref_callbacks;
-		public Spectator(string playerName, ControlSettings settings){
+		protected NetworkIdentity _ref_networkIdentity;
+		public int connID {get;} 
+		public GameEyes gameEyes; 
+		public Spectator(string playerName,int connID,  ControlSettings settings, GameObject pCamera=null){
+			
+			this.connID=connID;
 			this.uuid=playerName.GetHashCode();
 			this.playerName=playerName; 
 			this._ref_callbacks = new Dictionary<InputAction, Action<InputAction.CallbackContext>>();
 			sleepingCameras=new List<GameObject>();
-			creatCamera(ref pCamera);
+			if(pCamera!=null){
+				this.pCamera=pCamera;
+				gameEyes=this.pCamera.GetComponent<GameEyes>();
+			}else{
+				creatCamera(ref pCamera);
+				gameEyes=this.pCamera.AddComponent<GameEyes>();
+				_ref_networkIdentity= this.pCamera.AddComponent<NetworkIdentity>();
+			
+			}
 			this.settings=settings;
-			var k=this.pCamera.AddComponent<GameEyes>();
-			k.bindSettings(settings);
+			
+			
 			curCamera=pCamera; 
 			
 		}
@@ -48,6 +61,10 @@ namespace Kara.Playables{
 		public void getCurCamera(ref GameObject camera){
 			camera=curCamera; 
 		}
+		public NetworkIdentity getIdentity(){
+			return _ref_networkIdentity;
+		}
+		
 		public void switchCamera(ref GameObject toCamera){
 			curCamera.SetActive(false);
 			sleepingCameras.Add(curCamera); 
@@ -58,17 +75,20 @@ namespace Kara.Playables{
 			go= new GameObject(uuid+"_MainCamera");
 			go.AddComponent<Camera>();
 		}
-		public void resetCamera(){
+		public GameObject resetCamera(){
 			if(pCamera!=null){
-				if(curCamera){
-					curCamera.SetActive(false); 
+				//make every camera inactive on scene
+				foreach(var cam in GameObject.FindObjectsOfType<Camera>()){
+					cam.gameObject.SetActive(false);
 				}
 				curCamera=pCamera;
-				curCamera.SetActive(true); 
+				curCamera.SetActive(true);
+				return curCamera;  
 			}else{
 				Debug.LogWarning("Default Player Camera(DPC) was erased creating a new one");
 				creatCamera(ref pCamera);
-				resetCamera(); 
+				return resetCamera(); 
+
 			}
 		}
     }
@@ -78,45 +98,26 @@ namespace Kara.Playables{
 		protected _Resources playerResources; 
 		protected Research playerResearch;
 		protected PlayerControls controlSettings;
+		 
 		// IFFUCKED: check here this might be a cause, its not a great idea to do this but i don't have a clue how else i can do it(without changing the code in its entirity)
-		protected static _Prototype<Building_Abstract> cur_buildProto;
+		public _Prototype<Building_Abstract> cur_buildProto;
 		
-		public Player(string playerName, Color32 igColor, ControlSettings settings): base(playerName, settings){
+		public Player(string playerName, int connID,  Color32 igColor, ControlSettings settings, GameObject camera=null): base(playerName, connID, settings, camera){
 	     
 			this.playerColor=igColor;
 			this.team=Team.defaultTeam; 
 			this.playerResources= _Resources.CreateInstance<_Resources>(); 
 			this.playerResources.Init(100,100,100,100,100);
+			//TODO THIS IS RETARDED SHOULD BE SPECTATOR
+			this.pCamera.GetComponent<GameEyes>().bindIdentity(this); 
 			this.controlSettings= this.pCamera.GetComponent<GameEyes>().controls;
+			
 			this.playerResearch= new Research();
 			
-			UpdateAvailableBuilds();
 			
 		}
-		public void UpdateAvailableBuilds(){
-			
-			foreach (var item in playerResearch.availableBuild){
-				var k=item.getIcn(); 
-				UIDocument docum = GameObject.Find("Canvas").GetComponent<UIDocument>();
-				var cloningUI = docum.rootVisualElement.Q<VisualElement>(name: "CloningInstances");
-				//apend k to cloningUI
-				Button b = new Button();
-				b.text = "";
-				b.style.backgroundImage = new StyleBackground(k);
-				b.style.width = 64;
-				b.style.height = 64;
-				cloningUI.Add(b);
-			
-				b.clicked += () => {
-					item._gm_inst_now(); 
-					cur_buildProto=item;
-					//For MP purposes i will continue to use Game eyes to get the proper controls
-					addProc(); 
-				};			
-				
-			}
-		}
-		void addProc(){
+		
+		public void addProc(){
 			//_ref_callbacks.Add()
 			Action<InputAction.CallbackContext> actionone= (ctx => updatePos(ctx.ReadValue<Vector2>()));
 			Action<InputAction.CallbackContext> actiontwo = (ctx => buildProc(ctx.ReadValue<float>()));
@@ -129,7 +130,7 @@ namespace Kara.Playables{
 			
 		}
 		// This seems to not be working... which is ultra annoying
-		void endProc(){
+		public void endProc(){
 			//aparently dictionaries dont rearrange themselves after removing an element
 			var k = _ref_callbacks.Keys.ToList();
 			foreach(var item in k){
@@ -139,7 +140,7 @@ namespace Kara.Playables{
 			}
 
 		}
-		void buildProc(float val){
+		public void buildProc(float val){
 			if(val==1){
 				instProt();
 
@@ -169,21 +170,15 @@ namespace Kara.Playables{
 			cur_buildProto._gm_dest_now(); 
 		}
 		
-		/*void checkInteractable(){
-			RaycastHit hit;
-			var t=Mouse.current.position.ReadValue();
-			//Vector3 mousePos = controlSettings.Mou;
-			Ray ray = pCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(t.x,t.y,0));
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-				cur_buildProto.obj_Preview(hit.point);
-				
-			}
-		}*/
+		
+		
 		
 		public _Resources getPlayerResources(){
 			return this.playerResources;
 		}
-		
+		public Research getPlayerResearch(){
+			return this.playerResearch;
+		}
 	}
 
 }

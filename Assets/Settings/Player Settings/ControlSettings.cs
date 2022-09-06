@@ -20,7 +20,7 @@ namespace Kara_.Assets.Settings.Player_Settings
 		public static readonly string advSettings=Application.dataPath+"/Settings/Player Settings/AdvSettings.json"; 
 		public static readonly string keySettings=Application.dataPath+"/Settings/Player Settings/KeyBinds.json";
 		public void Init(){
-			Debug.Log("Init");
+			
 			refreshValues();
 		}
 		//TODO: Add a function to check if all necessary keys exist
@@ -32,8 +32,6 @@ namespace Kara_.Assets.Settings.Player_Settings
 			return true;
 		}
 		public void refreshValues(){
-			Debug.Log(advSettings);
-
 			if(File.Exists(advSettings)){
 				var json=File.ReadAllText(advSettings);
 				var settings = ControlSettingsSerializable.FromJson(json);

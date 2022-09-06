@@ -1,0 +1,17 @@
+{
+    "name": "AdvancedInstanceManager",
+    "references": [
+        "GUID:5f2f28fa72128b546ae1967c2dfe233b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
