@@ -32,7 +32,7 @@ public class GameBoardMan : NetworkManager{
 
 	public Vector3 getAvailableSpawnPoint(){
 		Debug.LogWarning("TODO-LACKS IMPLEMENTATION!!!!"); 
-		return new Vector3 (100, 50, 100);
+		return new Vector3 (100, 250, 100);
 	}
 
 	public override void OnServerAddPlayer(NetworkConnectionToClient conn){
@@ -64,6 +64,7 @@ public class GameBoardMan : NetworkManager{
 	
 
 		tempRefCamera.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
+		
 		//gameBoard.GetComponent<GameBoard>().setVisibilityTo(conn); 
 		//tempRefCamera.GetComponent<CloningBuildsUpdate>().test(conn);
 		//CloningBuildsUpdate.Instance.TargetUpdateAvailableBuilds(conn, me.getPlayerResearch());

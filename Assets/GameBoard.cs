@@ -17,6 +17,7 @@ public class GameBoard : NetworkBehaviour {
 	private GameObject gme_ocean; 
 	protected NetworkIdentity id_terrain;
 	protected NetworkIdentity id_ocean; 
+	protected NetworkIdentity id_sun; 
 	public GameObject server_builder{get; private set;}
 	public GameObject sun;
 	
@@ -25,6 +26,8 @@ public class GameBoard : NetworkBehaviour {
 		GraphicsSettings.lightsUseColorTemperature=true;
 			
 			gme_ocean= new GameObject("MainOcean");
+			//put gme_ocean in 200 y position
+			gme_ocean.transform.position=new Vector3(0,200,0);
 			gme_ocean.tag=gme_ocean_tag; 
 			gme_ocean.AddComponent<OceanGeneral>();
 			gme_ocean.AddComponent<MeshFilter>();
@@ -40,19 +43,26 @@ public class GameBoard : NetworkBehaviour {
 
 			sun= new GameObject("Sun");
 			sun.AddComponent<DayNightCycle>();
+			id_sun=sun.AddComponent<NetworkIdentity>();
 		
 		server_builder= GameObject.Find("ServerBuilder");
     }
-
+	[Server]
 	public void setVisibilityTo(NetworkConnectionToClient obj, bool visible=true){
 		if(visible){
 			NetworkServer.Spawn(gme_ocean);
 			NetworkServer.Spawn(gme_terrain);
+			NetworkServer.Spawn(sun);
+			
 			id_ocean.observers.Add(obj.connectionId, obj);
 			id_terrain.observers.Add(obj.connectionId, obj);
+			id_sun.observers.Add(obj.connectionId, obj);
+			NetworkServer.RebuildObservers(obj.identity, true);
 		}else{
 			id_ocean.observers.Remove(obj.connectionId);
 			id_terrain.observers.Remove(obj.connectionId);
+			id_sun.observers.Remove(obj.connectionId);
+			NetworkServer.RebuildObservers(obj.identity, false);
 		}
 		
 	}

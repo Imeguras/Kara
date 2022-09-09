@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using System;
 using UnityEngine;
 namespace Kara.ProceduralGen{
+	using Unity.VisualScripting;
 #if UNITY_EDITOR
-using UnityEditor;
+	using UnityEditor;
 
 
 	[CustomEditor(typeof(TerrainGeneral))]
@@ -96,21 +97,24 @@ using UnityEditor;
 			
 			
 			td.SetHeights(0,0, hmap);//float[,] hmap= (float[,])stuff.Clone();
-			//float[,] hmap=// await perNoise.retHeightsMap(min, max);
-			
+
 			
 			
 		}
 		public async void ApplyWater(){
-			errosion= new _WaterErosion(iter, stuff,precipitation,precipitation_std,soilClumps,minSteep);
-			stuff=await errosion.erode();
-			float[,] hmap=new float[td.heightmapResolution,td.heightmapResolution];
-			for (int y = 0; y < td.heightmapResolution; y++){
-				for (int x = 0; x < td.heightmapResolution; x++){
-					hmap[y,x]=(float)stuff[y,x];
-				}	
+			errosion= new _WaterErosion(iter, stuff,precipitation,precipitation_std, minSteep);
+			int k = await errosion.erode(ref stuff);
+			if(k != 0){
+				Debug.LogError("There was an error on errosion, k is: " + k);
+				return; 
+			}else{
+				float[,] hmap=new float[td.heightmapResolution,td.heightmapResolution]; 
+				for (int y = 0; y < td.heightmapResolution; y++){ 
+					for (int x = 0; x < td.heightmapResolution; x++){ 
+						hmap[y,x]=(float)stuff[y,x]; 
+					}
+				}	 
 			}
-			td.SetHeights(0,0, hmap);
 		}
     }
 }

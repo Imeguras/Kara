@@ -1,10 +1,8 @@
-using System.IO;
 using System.Threading.Tasks;
-using System.Xml;
 using System;
 using UnityEngine; 
-using TestSimpleRNG; 
-
+using TestSimpleRNG;
+using Kara.MathS; 
 namespace Kara.ProceduralGen{
 	public class _PerlinNoise{
 		public uint octaves;
@@ -13,59 +11,57 @@ namespace Kara.ProceduralGen{
 		public double[,] rnd1; 
 		public double[,] rnd2; 
 		private int width;
-		private int lenght; 
-
+		private int length; 
+		float persistance; 
 		double maxHeight;
 		System.Random rnd; 
-		public _PerlinNoise(int width=500, int lenght=500, double maxHeight=1000, uint octaves=20, float lacunarity=0.1f ){
+		public _PerlinNoise(int width=500, int length=500, double maxHeight=1000, uint octaves=20, float lacunarity=0.8f, float persistance=0.5f ){
 			rnd= new System.Random();
 			Math.Clamp(octaves, 2, 255); 
 			Math.Clamp(width, 32, int.MaxValue);
-			Math.Clamp(lenght, 32, int.MaxValue);
+			Math.Clamp(length, 32, int.MaxValue);
 			this.width=width;
-			this.lenght=lenght;
-			map=new Double[lenght,width];
-			rnd1=new Double[lenght,width];
-			rnd2=new Double[lenght,width];
+			this.length=length;
+			map=new Double[length,width];
+			rnd1=new Double[length,width];
+			rnd2=new Double[length,width];
 			this.octaves=octaves;
 			this.lacunarity= lacunarity;
 			this.maxHeight=maxHeight;
-			
+			this.persistance=persistance;
 		}
+		//TODO: Optimize
 		public Task<double[,]>  setPerlinData(){
 			GenNoise(ref rnd1, ref rnd2);
-		
-			for(int u=1; u<octaves; u++){ 
-				GenPerlin(u);
+			float k = octaves; 
+			for(int u=1; u<octaves; u++){
+				GenPerlin(ref k, u );
+				k *= persistance;  
 			}
+			Strech();
 			return Task.FromResult<double[,]>(map);
 			
 		}
-		/*public Task<float[,]> retHeightsMap(float min, float max){
-
-			float[,] hmap= new float[lenght, width];
-			for (int y = 0; y < this.lenght; y++){	
-				for (int x = 0; x < this.width; x++){
-					
-						hmap[y,x]=Math.Abs( ( ((float)map[y,x])-min ) / (max-min) );
-					
+		public void Strech(){
+			for(int i=0; i<length; i++){
+				for(int j=0; j<width; j++){
+					map[i,j]+=0.5;
 				}
 			}
-			return Task.FromResult<float[,]>(hmap); 
-		}*/
-		public void GenNoise(ref double[,] vertex3d1, ref double[,] vertex3d2, int width_=0, int lenght_=0){
+		}
+		public void GenNoise(ref double[,] vertex3d1, ref double[,] vertex3d2, int width_=0, int length_=0){
 			
 			int _width = this.width; 
-			int _lenght = this.lenght;
-			if(width_!=0&&lenght_!=0){
+			int _length = this.length;
+			if(width_!=0&&length_!=0){
 				_width=width_;
-				_lenght=lenght_;
+				_length=length_;
 			}
-			
-			for (int y = 0; y < _lenght; y++){
+			SimpleRNG.SetSeedFromSystemTime();
+			for (int y = 0; y < _length; y++){
 				for (int x = 0; x < _width; x++){
 					double rdr1=SimpleRNG.GetNormal(0.5f, 0.2f);
-					double rdr2=SimpleRNG.GetNormal(0.5f, 0.2f);
+					double rdr2=rnd.NextDouble();
 					
 					vertex3d1[y,x]= rdr1;
 					vertex3d2[y,x]= rdr2;
@@ -73,32 +69,33 @@ namespace Kara.ProceduralGen{
 			}
 		}
 		
-		public void GenPerlin(int u=0,int width_=0, int lenght_=0){
+
+		
+		public void GenPerlin(ref float weight, int currentOctave=1, int width_=0, int length_=0 ){
 			int _width = this.width; 
-			int _lenght = this.lenght;
-			if(width_!=0&&lenght_!=0){
+			int _length = this.length;
+			//float weight= 1f;
+			float _lacunarity=lacunarity/(2f*currentOctave);
+			if(width_!=0&&length_!=0){
 				_width=width_;
-				_lenght=lenght_;
+				_length=length_;
 			}
-			Double value=0;
-				for(int y=0; y<_lenght-1; y++){
-					for(int x=0; x<_width-1; x++){
-						value=perlin(x*lacunarity/u,y*lacunarity/u);
-						///u	
-						map[y,x]+= value/octaves;
-					}
+			double random=0; 
+			for (int y = 0; y < _length; y++){
+				for (int x = 0; x < _width; x++){
 					
-					
-			
+					random=perlin(x*_lacunarity,y*_lacunarity);
+					map[y,x]+=Math.Clamp(((random)*2/octaves), 0f, 1f); 
+
 				}
-			
-			
+			}
 		}
+
 		public int getWidth(){
 			return this.width;
 		}
-		public int getLenght(){
-			return this.lenght;
+		public int getLength(){
+			return this.length;
 		}
 		public uint getOctaves(){
 			return this.octaves;
@@ -122,18 +119,16 @@ namespace Kara.ProceduralGen{
 
 			n0 = dotGridGradient(x0, y0, x, y, rnd1, rnd2);
 			n1 = dotGridGradient(x1, y0, x, y, rnd1, rnd2);
-			ix0 = lerp(n0, n1, sx);
+			ix0 = KaraMath.INSTANCE.lerp(n0, n1, sx);
 
 			n0 = dotGridGradient(x0, y1, x, y, rnd1, rnd2);
 			n1 = dotGridGradient(x1, y1, x, y, rnd1, rnd2);
-			ix1 = lerp(n0, n1, sx);
+			ix1 = KaraMath.INSTANCE.lerp(n0, n1, sx);
 			
-			value = lerp(ix0, ix1, sy);
+			value = KaraMath.INSTANCE.lerp(ix0, ix1, sy);
 			return value;
 		}
-		double lerp(double a0, double a1, double w) {
-			return (1.0f - w)*a0 + w*a1;
-		}
+		
 		
 		// Computes the dot product of the distance and mapa vectors.
 		double dotGridGradient(int ix, int iy, double x, double y, double[,] grd1, double[,] grd2) {

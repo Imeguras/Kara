@@ -1,7 +1,6 @@
 using System;
 
-namespace TestSimpleRNG
-{
+namespace TestSimpleRNG{
     /// <summary>
     /// SimpleRNG is a simple random number generator based on 
     /// George Marsaglia's MWC (multiply with carry) generator.

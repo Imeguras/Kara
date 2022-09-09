@@ -43,8 +43,8 @@ namespace Kara.Playables{
 		}
 		
 		public override void OnStartClient() {
-			mins = new Vector3(0f, 15f, 4f);
-			maxs = new Vector3(500f, 90f, 504f);
+			mins = new Vector3(0f, 215f, 4f);
+			maxs = new Vector3(500f, 290f, 504f);
 			speed =  controlSettings.mousePanSensitivity * Time.deltaTime;
 			desiredPosition = transform.position;
 			

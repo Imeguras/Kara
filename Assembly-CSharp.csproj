@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{61afd091-0c63-c9e4-fe8e-e7a2c8ae59bd}</ProjectGuid>
+    <ProjectGuid>{62e4ba9f-87c0-8834-bd26-e6b536e72b56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Gameboard/Movables/Citizen.cs" />
+     <Compile Include="Assets/MathScripts/KaraMath.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Capital/Capital.cs" />
      <Compile Include="Assets/Gameboard/Movables/Unit.cs" />
      <Compile Include="Assets/Settings/Player Settings/PlayerControls.cs" />
-     <Compile Include="Assets/SimpleRNG.cs" />
      <Compile Include="Assets/Mirror/Examples/Basic/Scripts/PlayerUI.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/TerrainGeneral.cs" />
      <Compile Include="Assets/Playables/ResourcesUpdate.cs" />
@@ -55,6 +55,7 @@
      <Compile Include="Assets/Settings/Player Settings/ControlSettings.cs" />
      <Compile Include="Assets/Playables/Team.cs" />
      <Compile Include="Assets/Playables/Research.cs" />
+     <Compile Include="Assets/MathScripts/SimpleRNG.cs" />
      <Compile Include="Assets/Gameboard/Board_Entities.cs" />
      <Compile Include="Assets/GameBoard.cs" />
      <Compile Include="Assets/Scenes/MainMenu/MainMenu.cs" />
@@ -325,37 +326,37 @@
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.Unsafe.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.burst@1.7.0/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.visualscripting@1.7.5/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.visualscripting@1.7.5/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/PackageCache/com.unity.testtools.codecoverage@1.1.1/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/PackageCache/com.unity.testtools.codecoverage@1.1.1/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll</HintPath>
@@ -724,171 +725,171 @@
         <HintPath>/home/micron/sav/UnitorEditor2022/2022.1.0b16/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.003">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.003.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VectorGraphics">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VectorGraphics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.003">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.003.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VectorGraphics.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VectorGraphics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara﹕77c86e9fb3666/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>/home/micron/sav/Trabalhos/2021-2022/Kara/Kara_/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{3217b281-0fc2-2df3-b84a-ccb380e2a571}</Project>
+      <Project>{578ea421-c97c-b6a7-b3e9-ba85a29a12a1}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="kcp2k.csproj">
-      <Project>{96e88c2f-53a2-0b73-f7e1-345f3a27ab8f}</Project>
+      <Project>{ad09117d-011c-34b9-3b95-977859ddab9d}</Project>
       <Name>kcp2k</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{21483de2-f02e-5203-d90f-630832bf726e}</Project>
+      <Project>{1ebf4b80-da1c-0d2a-6edf-3326d761d4aa}</Project>
       <Name>Mirror.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="AdvancedInstanceManager.csproj">
-      <Project>{ae594d74-a3c1-21e1-2730-b5d249efd25d}</Project>
+      <Project>{f89d3e29-0bd1-f0be-6df9-de2b745c7ced}</Project>
       <Name>AdvancedInstanceManager</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{d7a2b61f-f01c-4bf5-4d59-ad8e6b25e996}</Project>
+      <Project>{d8cef47e-c3e3-bbf9-1d91-ab13773dda98}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{80b64523-4c04-d504-103d-b67dae465662}</Project>
+      <Project>{c4a5df7a-0baf-acba-8ec5-a247454427f7}</Project>
       <Name>Mirror.Authenticators</Name>
     </ProjectReference>
     <ProjectReference Include="Telepathy.csproj">
-      <Project>{904899e9-f4a0-507f-b460-7ee74eaf4d04}</Project>
+      <Project>{bc0eff08-9874-e518-b077-897cbb4a86d3}</Project>
       <Name>Telepathy</Name>
     </ProjectReference>
     <ProjectReference Include="where-allocations.csproj">
-      <Project>{40b1e5af-5854-207a-10e8-6d954566c22b}</Project>
+      <Project>{cdae16f3-b9af-2b7f-2eca-13f59e991ed8}</Project>
       <Name>where-allocations</Name>
     </ProjectReference>
     <ProjectReference Include="SimpleWebTransport.csproj">
-      <Project>{783f3fe9-a6c8-87f9-fd9f-d94916d6c83a}</Project>
+      <Project>{eabc510c-d324-6012-41f6-1bdc06bc70fe}</Project>
       <Name>SimpleWebTransport</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{698247c3-32d1-fac4-3672-fa7fcb3ed428}</Project>
+      <Project>{46c97d53-6d76-7dce-3ca4-facfcf2e3ead}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
   </ItemGroup>
