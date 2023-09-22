@@ -47,22 +47,22 @@ public class GameBoard : NetworkBehaviour {
 		
 		server_builder= GameObject.Find("ServerBuilder");
     }
-	[Server]
+	
 	public void setVisibilityTo(NetworkConnectionToClient obj, bool visible=true){
 		if(visible){
 			NetworkServer.Spawn(gme_ocean);
 			NetworkServer.Spawn(gme_terrain);
 			NetworkServer.Spawn(sun);
 			
-			id_ocean.observers.Add(obj.connectionId, obj);
-			id_terrain.observers.Add(obj.connectionId, obj);
-			id_sun.observers.Add(obj.connectionId, obj);
-			NetworkServer.RebuildObservers(obj.identity, true);
+			//id_ocean.observers.Add(obj.connectionId, obj);
+			//id_terrain.observers.Add(obj.connectionId, obj);
+			//id_sun.observers.Add(obj.connectionId, obj);
+			//NetworkServer.RebuildObservers(obj.identity, true);
 		}else{
-			id_ocean.observers.Remove(obj.connectionId);
-			id_terrain.observers.Remove(obj.connectionId);
-			id_sun.observers.Remove(obj.connectionId);
-			NetworkServer.RebuildObservers(obj.identity, false);
+			//id_ocean.observers.Remove(obj.connectionId);
+			//id_terrain.observers.Remove(obj.connectionId);
+			//id_sun.observers.Remove(obj.connectionId);
+			//NetworkServer.RebuildObservers(obj.identity, false);
 		}
 		
 	}

@@ -65,7 +65,7 @@ public class GameBoardMan : NetworkManager{
 
 		tempRefCamera.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
 		
-		//gameBoard.GetComponent<GameBoard>().setVisibilityTo(conn); 
+		gameBoard.GetComponent<GameBoard>().setVisibilityTo(conn); 
 		//tempRefCamera.GetComponent<CloningBuildsUpdate>().test(conn);
 		//CloningBuildsUpdate.Instance.TargetUpdateAvailableBuilds(conn, me.getPlayerResearch());
 		

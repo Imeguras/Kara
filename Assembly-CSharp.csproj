@@ -36,10 +36,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Gameboard/Enviroment/Terrain/Teste/TerrainGenerator.cs" />
      <Compile Include="Assets/Gameboard/Movables/Citizen.cs" />
+     <Compile Include="Assets/Gameboard/Enviroment/Terrain/Teste/HeightMapGenerator.cs" />
      <Compile Include="Assets/MathScripts/KaraMath.cs" />
      <Compile Include="Assets/Gameboard/Buildings/Capital/Capital.cs" />
      <Compile Include="Assets/Gameboard/Movables/Unit.cs" />
+     <Compile Include="Assets/Gameboard/Enviroment/Terrain/Teste/MeshEditor.cs" />
      <Compile Include="Assets/Settings/Player Settings/PlayerControls.cs" />
      <Compile Include="Assets/Mirror/Examples/Basic/Scripts/PlayerUI.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/TerrainGeneral.cs" />
@@ -52,6 +55,7 @@
      <Compile Include="Assets/Playables/Player.cs" />
      <Compile Include="Assets/Playables/GameEyes.cs" />
      <Compile Include="Assets/Gameboard/Enviroment/Terrain/WaterErosion.cs" />
+     <Compile Include="Assets/Gameboard/Enviroment/Terrain/TerrainKara.cs" />
      <Compile Include="Assets/Settings/Player Settings/ControlSettings.cs" />
      <Compile Include="Assets/Playables/Team.cs" />
      <Compile Include="Assets/Playables/Research.cs" />
@@ -66,16 +70,21 @@
      <Compile Include="Assets/Settings/General Settings/GameSettings.cs" />
      <Compile Include="Assets/GameBoardMan.cs" />
      <Compile Include="Assets/Mirror/Examples/Basic/Scripts/BasicNetManager.cs" />
+     <Compile Include="Assets/Gameboard/Enviroment/Terrain/Teste/Erosion.cs" />
+     <None Include="Assets/Gameboard/Enviroment/Terrain/Teste/Shaders/Terrain.shader" />
      <None Include="Assets/Gameboard/UI/EffectiveStandUI.uxml" />
      <None Include="Assets/Scenes/MainMenu/MainMenu.uss" />
      <None Include="Assets/Scenes/MainMenu/MainMenu.uxml" />
      <None Include="Assets/ScriptTemplates/51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
+     <None Include="Assets/Gameboard/Enviroment/Terrain/Teste/ComputeShaders/Erosion.compute" />
      <None Include="Assets/ScriptTemplates/56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
      <None Include="Assets/Gameboard/UI/EffectiveStandUI.uss" />
+     <None Include="Assets/Gameboard/Enviroment/Terrain/Teste/Shaders/Terrain2.shader" />
      <None Include="Assets/Mirror/Version.txt" />
      <None Include="Assets/Mirror/Readme.txt" />
      <None Include="Assets/ScriptTemplates/57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
      <None Include="Assets/ScriptTemplates/52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
+     <None Include="Assets/Gameboard/Enviroment/Terrain/Teste/ComputeShaders/HeightMap.compute" />
      <None Include="Assets/Mirror/Notice.txt" />
      <None Include="Assets/Mirror/Plugins/Mono.Cecil/License.txt" />
      <None Include="Assets/ScriptTemplates/55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
